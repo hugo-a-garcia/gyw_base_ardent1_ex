@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:developer';
 
 import 'package:gyw_base_ardent1/gyw_base_ardent1.dart';
+import 'package:gyw_base_ardent1/providers/bluetooth_providers.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(ProviderScope(child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -54,7 +56,7 @@ class _GYWExampleScreenState extends State<GYWExampleScreen> {
     ];
 
     for (final GYWDrawing drawing in drawings) {
-      await connectedDevice?.displayDrawing(drawing);
+      await connectedDevice?.sendDrawing(drawing);
     }
   }
 

@@ -9,13 +9,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_blue_plus: ^1.35.3
+  flutter_riverpod: ^2.6.1
   gyw_base_ardent1:
     path: /home/hugo/gyw/git/gyw_base_ardent1
+  riverpod_annotation: ^2.6.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  riverpod_generator: ^2.6.5
+  build_runner: ^2.4.15
+  custom_lint: ^0.7.5
+  riverpod_lint: ^2.6.5
 
 flutter:
   uses-material-design: true
