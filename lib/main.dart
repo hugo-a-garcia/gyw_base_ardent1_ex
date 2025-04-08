@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:developer';
 
 import 'package:gyw_base_ardent1/gyw_base_ardent1.dart';
-import 'package:gyw_base_ardent1/providers/bluetooth_providers.dart';
 
 void main() {
   runApp(ProviderScope(child: const MainApp()));

@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gyw_base_ardent1/providers/bluetooth_providers.dart';
+import 'package:gyw_base_ardent1/gyw_base_ardent1.dart';
 
 import 'snackbar.dart';
 

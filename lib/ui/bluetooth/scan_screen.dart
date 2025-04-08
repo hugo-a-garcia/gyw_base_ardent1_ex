@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gyw_base_ardent1/providers/bluetooth_providers.dart';
+import 'package:gyw_base_ardent1/gyw_base_ardent1.dart';
+import 'package:gyw_base_ardent1_ex/ui/device/device_screen.dart';
 
 class ScanScreen extends ConsumerWidget {
   const ScanScreen({super.key});
@@ -9,10 +10,16 @@ class ScanScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncResults = ref.watch(scanResultsRecordsProvider);
     return Scaffold(
-      appBar: AppBar(title: Text('Blue River')),
+      appBar: AppBar(title: Text('Connect')),
       body: Center(
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Tap on the device you wish to connect to or scan to update the list with new devices',
+              ),
+            ),
             ElevatedButton(
               onPressed: () => ref.refresh(startScanProvider),
               child: Text('Scan'),
@@ -52,33 +59,35 @@ class ScanResutCard extends StatelessWidget {
     return Card(
       child: InkWell(
         onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Text('Awesome Snackbar!'),
-              action: SnackBarAction(
-                label: 'Action',
-                onPressed: () {
-                  // Code to execute.
-                },
-              ),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:
+                  (context) =>
+                      DeviceScreen(deviceRecord.deviceId, deviceRecord.rssi),
             ),
           );
         },
-        child: Column(
-          children: [
-            Text('advName : ${advertisement.advName}'),
-            Text('connectable : ${advertisement.connectable}'),
-            Text('txPowerLevel : ${advertisement.txPowerLevel}'),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('advName : ${advertisement.advName}'),
+              Text('connectable : ${advertisement.connectable}'),
+              Text('txPowerLevel : ${advertisement.txPowerLevel}'),
 
-            Text('advName : ${deviceRecord.advName}'),
-            Text(
-              'isAutoConnectedEnabled : ${deviceRecord.isAutoConnectedEnabled}',
-            ),
-            Text('isConnected : ${deviceRecord.isConnected}'),
-            Text('isDiconnedted : ${deviceRecord.isDiconnedted}'),
-            Text('mtuNow : ${deviceRecord.mtuNow}'),
-            Text('platformName : ${deviceRecord.platformName}'),
-          ],
+              Text('advName : ${deviceRecord.advName}'),
+              Text('deviceId :  ${deviceRecord.deviceId}'),
+              Text(
+                'isAutoConnectedEnabled : ${deviceRecord.isAutoConnectedEnabled}',
+              ),
+              Text('isConnected : ${deviceRecord.isConnected}'),
+              Text('isDiconnedted : ${deviceRecord.isDiconnedted}'),
+              Text('mtuNow : ${deviceRecord.mtuNow}'),
+              Text('platformName : ${deviceRecord.platformName}'),
+            ],
+          ),
         ),
       ),
     );
