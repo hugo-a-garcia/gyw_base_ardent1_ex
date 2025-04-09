@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gyw_base_ardent1/gyw_base_ardent1.dart';
 
-import '../../main_new.dart' show routeObserver;
+import '../../main.dart' show routeObserver;
 
 final DeviceService deviceService = DeviceService();
 
@@ -25,6 +25,7 @@ class _DeviceScreen2State extends State<DeviceScreen> with RouteAware {
   @override
   void dispose() {
     routeObserver.unsubscribe(this);
+    deviceService.disconnectDevice();
     super.dispose();
   }
 
@@ -42,7 +43,6 @@ class _DeviceScreen2State extends State<DeviceScreen> with RouteAware {
   @override
   void initState() {
     super.initState();
-    print('initState with ${widget.deviceId}');
     deviceService.connectDevice(widget.deviceId, widget.rssi);
   }
 
@@ -55,7 +55,7 @@ class _DeviceScreen2State extends State<DeviceScreen> with RouteAware {
           onPressed: () {
             deviceService.sendExampleData();
           },
-          child: Text('${widget.deviceId} ${widget.rssi}'),
+          child: Text('Send Example Datat to deviceId : ${widget.deviceId}'),
         ),
       ),
     );
