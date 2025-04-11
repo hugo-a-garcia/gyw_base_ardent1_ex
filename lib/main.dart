@@ -9,6 +9,7 @@ import 'ui/bluetooth/scan_screen.dart';
 final RouteObserver<ModalRoute<void>> routeObserver =
     RouteObserver<ModalRoute<void>>();
 
+// Must add logging while debugging
 void main() {
   // Todo : Move the next line to a provider???
   FlutterBluePlus.setLogLevel(LogLevel.verbose, color: true);
